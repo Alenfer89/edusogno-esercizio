@@ -1,4 +1,8 @@
-<?php include('server.php'); ?>
+<?php include('server.php'); 
+echo $_SESSION['user'];
+echo $_SESSION['email'];
+echo $_SESSION['success'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">

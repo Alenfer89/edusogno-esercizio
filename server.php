@@ -133,6 +133,7 @@
     }
 
     if(isset($_SESSION['email'])){
+        $email = $_SESSION['email'];
         $eventsQuery = "SELECT * FROM `eventi` WHERE `attendees` LIKE '%$email%'";
         $result = $conn->query($eventsQuery);
         if($result && $result->num_rows > 0){
