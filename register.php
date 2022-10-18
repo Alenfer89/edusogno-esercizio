@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+    <nav>
+        <a href="index.php">index</a>
+        <a href="login.php">login</a>
+    </nav>
     <h1>
         REGISTER
     </h1>
