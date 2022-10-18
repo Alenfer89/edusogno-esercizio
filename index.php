@@ -15,9 +15,20 @@
         <a href="register.php">register</a>
         <a href="login.php">login</a>
     </nav>
+    
     <h1>
         INDEX
     </h1>
+
+    <?php if(isset($_SESSION['success'])){ ; ?>
+        <p>
+            tizio loggato
+        </p>
+    <?php } else { ; ?>
+        <p>
+            tizio non loggato
+        </p>
+    <?php } ; ?>
 
 </body>
 
