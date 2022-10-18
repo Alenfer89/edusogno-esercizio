@@ -23,7 +23,6 @@
     <section class="container">
         <div class="row justify-content-center">
             <div class="col-6">
-                <?php if(!$_SESSION['hasRegistered']){ ; ?>
                 <form action="register.php" method="POST">
                     <div class="mb-3">
                         <label for="inputFirstName" class="form-label">Nome</label>
@@ -67,14 +66,16 @@
                     <?php } ; ?>
                     <button type="submit" class="btn btn-primary" name='addUser'>Submit</button>
                 </form>
-                <?php } else { ; ?>
-                    <p class="">
-                        <?php echo $_SESSION['message'] ; ?>
-                    </p>
-                    <a href="login.php">vai al login</a>
-                <?php } ; ?>
             </div>
         </div>
+        //todo controlla condizione per cui il messaggio di reg rimane imperituro
+        <?php if($_SESSION['hasRegistered']){ ; ?>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <?php echo $_SESSION['message'] ; ?>
+            </div>
+        </div>
+        <?php } ; ?>
         <?php if(isset($errors['alreadySignedEmail'])){ ; ?>
         <div class="row justify-content-center">
             <div class="col-6">
