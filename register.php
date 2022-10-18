@@ -27,6 +27,11 @@
                         <label for="inputFirstName" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="inputFirstName" name='firstName'>
                     </div>
+                    <?php if(isset($errors['firstName'])) {; ?>
+                        <p>
+                            <?php echo $errors['firstName']; ?>
+                        </p>
+                    <?php } ; ?>
                     <div class="mb-3">
                         <label for="inputLastName" class="form-label">Cognome</label>
                         <input type="text" class="form-control" id="inputLastName" name='lastName'>
