@@ -69,8 +69,10 @@
         } elseif ($result && count($errors) == 0) {
             //echo count($errors);
             //echo 'utente non registrato';
-            $addUserQuery = "INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ('$firstName','$lastName','$email','$password')";
-            $addUser = $conn->query($addUserQuery);
+            // $addUserQuery = "INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ('$firstName','$lastName','$email','$password')";
+            // $addUser = $conn->query($addUserQuery);
+            $addUserQuery = $conn->prepare("INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ( ? , ? , ? , ? )");
+            $addUserQuery->bind_param("ssss", $firstName, $lastName, $email, $password);
             $_SESSION['message'] = 'Registrazione avvenuta con successo!';
             $_SESSION['hasRegistered'] = true;
         } else {

@@ -68,11 +68,16 @@
                 </form>
             </div>
         </div>
-        //todo controlla condizione per cui il messaggio di reg rimane imperituro
+        <!-- todo  -->
+        <!-- todo  controlla condizione per cui il messaggio di reg rimane imperituro -->
+        <!-- todo -->
         <?php if($_SESSION['hasRegistered']){ ; ?>
         <div class="row justify-content-center">
             <div class="col-6">
-                <?php echo $_SESSION['message'] ; ?>
+                <p>
+                    <?php echo $_SESSION['message'] ; ?>
+                </p>
+                <a href="login.php">vai al login</a>
             </div>
         </div>
         <?php } ; ?>
