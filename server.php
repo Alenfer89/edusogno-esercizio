@@ -1,6 +1,7 @@
 <?php 
     session_start();
     $conn = new mysqli('localhost', 'root', 'root', 'edusogno');
+    $_SESSION['hasRegistered'] = false;
 
     // if($conn->connect_error){
     //     echo 'errori';
@@ -73,6 +74,7 @@
             // $addUser = $conn->query($addUserQuery);
             $addUserQuery = $conn->prepare("INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ( ? , ? , ? , ? )");
             $addUserQuery->bind_param("ssss", $firstName, $lastName, $email, $password);
+            $addUserQuery->execute();
             $_SESSION['message'] = 'Registrazione avvenuta con successo!';
             $_SESSION['hasRegistered'] = true;
         } else {
