@@ -20,7 +20,7 @@
     <h1>
         REGISTER
     </h1>
-    <section class="container">
+    <section class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-6">
                 <form action="register.php" method="POST">
@@ -68,9 +68,6 @@
                 </form>
             </div>
         </div>
-        <!-- todo  -->
-        <!-- todo  controlla condizione per cui il messaggio di reg rimane imperituro -->
-        <!-- todo -->
         <?php if($_SESSION['hasRegistered']){ ; ?>
         <div class="row justify-content-center">
             <div class="col-6">
