@@ -26,13 +26,16 @@
 
     <?php if(isset($_SESSION['success'])): ; ?>
         <p>
+            welcome 
             <span>
-                <?php echo $_SESSION['user'] + ' '; ?>
+                <?php echo $_SESSION['user'] . ' '; ?>
             </span>
             tizio loggato
         </p>
         <p>
-            <a href="">Logout</a>
+            <form action="login.php" method="GET">
+                <button type='submit' class="btn btn-primary" name='login'>logout</button>
+            </form>
         </p>
     <?php  else  : ; ?>
         <p>
