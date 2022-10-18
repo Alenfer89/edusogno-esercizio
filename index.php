@@ -31,31 +31,14 @@
                 <?php echo $_SESSION['user'] . ' '; ?>
             </span>
             tizio loggato
-            <?php
-            echo $_SESSION['user'];
-            echo $_SESSION['success']; 
-            ?>
         </p>
         <p>
-            <!-- <form action="login.php" method="POST">
-                <button type='submit' class="btn btn-primary" name='logout'>logout</button>
-            </form> -->
             <a href="logout.php">Logout</a>
         </p>
     <?php  else  : ; ?>
         <p>
             tizio non loggato
             <span>
-            <!-- <?php
-            echo $_SESSION['user'];
-            echo $_SESSION['success']; 
-            ?>
-            </span>
-            <pre>
-                <?php 
-                var_dump($_SESSION['user']);
-                ?>
-            </pre> -->
         </p>
     <?php endif ; ?>
 
