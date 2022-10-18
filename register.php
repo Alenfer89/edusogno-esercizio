@@ -68,7 +68,7 @@
                 </form>
             </div>
         </div>
-        <?php if($_SESSION['hasRegistered']){ ; ?>
+        <?php if(isset($_SESSION['hasRegistered']) && $_SESSION['hasRegistered']){ ; ?>
         <div class="row justify-content-center">
             <div class="col-6">
                 <p>

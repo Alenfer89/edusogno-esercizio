@@ -1,8 +1,8 @@
 <?php 
     session_start();
     $conn = new mysqli('localhost', 'root', 'root', 'edusogno');
-    $_SESSION['hasRegistered'] = false;
-    $_SESSION['message'] = '';
+    //$_SESSION['hasRegistered'] = false;
+    //$_SESSION['message'] = '';
 
     // if($conn->connect_error){
     //     echo 'errori';
