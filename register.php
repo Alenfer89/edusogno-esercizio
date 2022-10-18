@@ -36,11 +36,21 @@
                         <label for="inputLastName" class="form-label">Cognome</label>
                         <input type="text" class="form-control" id="inputLastName" name='lastName'>
                     </div>
+                    <?php if(isset($errors['lastName'])) {; ?>
+                        <p>
+                            <?php echo $errors['lastName']; ?>
+                        </p>
+                    <?php } ; ?>
                     <div class="mb-3">
                         <label for="inputEmail" class="form-label">Email address</label>
                         <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" name='email'>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
+                    <?php if(isset($errors['email'])) {; ?>
+                        <p>
+                            <?php echo $errors['email']; ?>
+                        </p>
+                    <?php } ; ?>
                     <div class="mb-3">
                         <label for="inputPassword" class="form-label">Password</label>
                         <input type="password" class="form-control" id="inputPassword" name='password'>
@@ -48,6 +58,11 @@
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         </div> -->
                     </div>
+                    <?php if(isset($errors['password'])) {; ?>
+                        <p>
+                            <?php echo $errors['password']; ?>
+                        </p>
+                    <?php } ; ?>
                     <button type="submit" class="btn btn-primary" name='addUser'>Submit</button>
                 </form>
             </div>
