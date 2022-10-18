@@ -2,6 +2,7 @@
     session_start();
     $conn = new mysqli('localhost', 'root', 'root', 'edusogno');
     $_SESSION['hasRegistered'] = false;
+    $_SESSION['message'] = '';
 
     // if($conn->connect_error){
     //     echo 'errori';
@@ -56,7 +57,7 @@
             $errors['password'] = 'Devi inserire una password!';
         }
 
-        //user added to server if email is not already included
+        //user added to server if email is not already included only if there are no errors
         if(count($errors) == 0){
             $usersQuery = "SELECT * FROM `utenti` WHERE `email`='$email'";
             $result = $conn->query($usersQuery);
@@ -83,6 +84,7 @@
             }
         } else {
             //echo 'risparmio risorse';
+            //var_dump($errors);
         }
     }
 
@@ -105,6 +107,26 @@
         //# password
         if (strlen(trim($password)) == 0) {
             $errors['password'] = 'Devi inserire una password!';
+        }
+
+        //user login if email and psw are correct and only if there are no errors
+        if(count($errors) == 0){
+            $userQuery = "SELECT * FROM `utenti` WHERE `email`='$email' AND `password`='$password'";
+            $result = $conn->query($userQuery);
+            if($result && $result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    var_dump($row);
+                    $_SESSION['user'] = $row['nome'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['success'] = 'Logged in';
+                    header('Location: index.php');
+                } 
+            } else if ($result) {
+                $_SESSION['message'] = 'Invalid email or password.';
+                echo $_SESSION['message'];
+            }
+        } else {
+            echo 'errori';
         }
     }
 

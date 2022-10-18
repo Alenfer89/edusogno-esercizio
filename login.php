@@ -50,6 +50,13 @@
                 </form>
             </div>
         </div>
+        <?php if(strlen($_SESSION['message']) > 0) : ; ?>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <?php echo $_SESSION['message'] ; ?>
+            </div>
+        </div>
+        <?php endif  ; ?>
 
     </section>
 </body>
