@@ -20,8 +20,10 @@
     <h1>
         REGISTER
     </h1>
-    <div class="row justify-content-center">
+    <section class="container">
+        <div class="row justify-content-center">
             <div class="col-6">
+                <?php if(!$_SESSION['hasRegistered']){ ; ?>
                 <form action="register.php" method="POST">
                     <div class="mb-3">
                         <label for="inputFirstName" class="form-label">Nome</label>
@@ -65,7 +67,23 @@
                     <?php } ; ?>
                     <button type="submit" class="btn btn-primary" name='addUser'>Submit</button>
                 </form>
+                <?php } else { ; ?>
+                    <p class="">
+                        <?php echo $_SESSION['message'] ; ?>
+                    </p>
+                    <a href="login.php">vai al login</a>
+                <?php } ; ?>
             </div>
         </div>
+        <?php if(isset($errors['alreadySignedEmail'])){ ; ?>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <p class="text-error">
+                    <?php echo $errors['alreadySignedEmail']; ?>
+                </p>
+            </div>
+        </div>
+        <?php } ; ?>
+    </section>
 </body>
 </html>

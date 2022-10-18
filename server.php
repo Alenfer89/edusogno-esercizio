@@ -18,6 +18,7 @@
     $password = "";
     $errors = [];
 
+    //user reg
     if (isset($_POST['addUser'])){
         //$errors = [];
         $firstName = $_POST['firstName']; 
@@ -25,10 +26,10 @@
         $email = $_POST['email']; 
         $password = $_POST['password'];
 
-        // errors checks
+        // errors checks start here
         //# firstname
         if (strlen(trim($firstName)) == 0) {
-            $errors['firstName'] = 'Devi inserire un nome!';
+            $errors['firstName'] = 'Devi inserire un nome per poterti registrare!';
         }
         if (strlen(trim($firstName)) > 45) {
             $errors['firstName'] = 'Il nome inserito è troppo lungo! Usa un massimo di 45 caratteri.';
@@ -52,6 +53,28 @@
         //# password
         if (strlen(trim($password)) == 0) {
             $errors['password'] = 'Devi inserire una password!';
+        }
+
+        //user added to server if email is not already included
+        $usersQuery = "SELECT * FROM `utenti` WHERE `email`='$email'";
+        $result = $conn->query($usersQuery);
+        if($result && $result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                //# email check
+                //var_dump($row);
+                //echo $row['email'];
+                //echo ' utente già registrato';
+                $errors['alreadySignedEmail'] = 'Email già in uso!';
+            } 
+        } elseif ($result && count($errors) == 0) {
+            //echo count($errors);
+            //echo 'utente non registrato';
+            $addUserQuery = "INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ('$firstName','$lastName','$email','$password')";
+            $addUser = $conn->query($addUserQuery);
+            $_SESSION['message'] = 'Registrazione avvenuta con successo!';
+            $_SESSION['hasRegistered'] = true;
+        } else {
+            echo 'terza via - errore query?';
         }
     }
 
