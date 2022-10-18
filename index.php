@@ -33,6 +33,22 @@
             tizio loggato
         </p>
         <p>
+            <?php var_dump($events) ; ?>
+        </p>
+        <?php if(count($events) > 0) :  ?>
+        <ul>
+            <?php foreach($events as $event) : ; ?>
+            <li>
+                <?php echo $event['nome_evento'] ; ?>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php else : ?>
+            <p>
+                Non hai eventi
+            </p>
+        <?php endif ; ?>
+        <p>
             <a href="logout.php">Logout</a>
         </p>
     <?php  else  : ; ?>

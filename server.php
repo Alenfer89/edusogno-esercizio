@@ -19,6 +19,7 @@
     $email = ""; 
     $password = "";
     $errors = [];
+    $events = [];
 
     //user reg
     if (isset($_POST['addUser'])){
@@ -121,12 +122,24 @@
                     $_SESSION['success'] = 'Logged in';
                     header('Location: index.php');
                 } 
+                
             } else if ($result) {
                 $_SESSION['message'] = 'Invalid email or password.';
                 echo $_SESSION['message'];
             }
         } else {
             echo 'errori';
+        }
+    }
+
+    if(isset($_SESSION['email'])){
+        $eventsQuery = "SELECT * FROM `eventi` WHERE `attendees` LIKE '%$email%'";
+        $result = $conn->query($eventsQuery);
+        if($result && $result->num_rows > 0){
+            $events = [];
+            while ($row = $result->fetch_assoc()){
+                array_push($events, $row);
+            }
         }
     }
 
