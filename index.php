@@ -18,7 +18,6 @@
 </head>
 
 <body>
-    
     <?php require('header.php') ; ?>
     <main class="position-relative">
         <div class="ax-content">
@@ -89,8 +88,6 @@
         </div>
         <?php require('background.php') ; ?>
     </main>
-    
-
 </body>
 
 </html>

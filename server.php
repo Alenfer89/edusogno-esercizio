@@ -47,15 +47,17 @@
         //# email
         if (strlen(trim($email)) == 0) {
             $errors['email'] = 'Non hai inserito l\'email!';
-        } elseif (strlen(trim($email)) > 255) {
-            $errors['email'] = 'L\'email inserita è troppo lunga! Usa un massimo di 255 caratteri.';
+        } elseif (strlen(trim($email)) > 45) {
+            $errors['email'] = 'L\'email inserita è troppo lunga! Usa un massimo di 45 caratteri.';
         } elseif (strpos($email, '@') == false) {
-            //. (strpos($email, '@') == false) || (strpos($email, '.') < strpos($email, '@'))
             $errors['email'] = 'Inserisci una email valida.';
         }
         //# password
         if (strlen(trim($password)) == 0) {
             $errors['password'] = 'Devi inserire una password!';
+        }
+        if (strlen(trim($password)) > 45) {
+            $errors['password'] = 'La password inserita è troppo lunga! Usa un massimo di 45 caratteri.';
         }
 
         //user added to server if email is not already included only if there are no errors
