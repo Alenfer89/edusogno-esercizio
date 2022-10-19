@@ -2,6 +2,6 @@
 FORKATE LA REPO
 ```
 
-- UTILIZZATE LA STRUTTURA PRESENTE NELLA REPO
+- Per vedere le validazioni di PHP, commentare lo script a riga 19 in register.php
 
-- ALL'INTERNO DI assets > db TROVERETE IL FILE DI MIGRAZIONE DEL DB 'Migrations.sql' CON IL NECESSARIO PER CREARE LA TABELLA utenti E eventi E PER MIGRARE I DATI DEGLI EVENTI
+- Per vedere le validazioni di PHP, commentare lo script a riga 19 in login.php

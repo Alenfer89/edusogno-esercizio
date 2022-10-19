@@ -1,18 +1,6 @@
 <?php 
     session_start();
     $conn = new mysqli('localhost', 'root', 'root', 'edusogno');
-    //$_SESSION['hasRegistered'] = false;
-    //$_SESSION['message'] = '';
-
-    // if($conn->connect_error){
-    //     echo 'errori';
-    // } else {
-    //     echo 'ok';
-    // }
-
-    // $object = [
-    //     'errore' => 'questo è un errore',
-    // ]
 
     $firstName = ""; 
     $lastName = ""; 
@@ -23,7 +11,6 @@
 
     //user reg
     if (isset($_POST['addUser'])){
-        //$errors = [];
         $firstName = $_POST['firstName']; 
         $lastName = $_POST['lastName']; 
         $email = $_POST['email']; 
@@ -67,16 +54,9 @@
             if($result && $result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
                     //# email check
-                    //var_dump($row);
-                    //echo $row['email'];
-                    //echo ' utente già registrato';
                     $errors['alreadySignedEmail'] = 'Email già in uso!';
                 } 
             } elseif ($result && count($errors) == 0) {
-                //echo count($errors);
-                //echo 'utente non registrato';
-                // $addUserQuery = "INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ('$firstName','$lastName','$email','$password')";
-                // $addUser = $conn->query($addUserQuery);
                 $addUserQuery = $conn->prepare("INSERT INTO `utenti` (`nome`, `cognome`, `email`, `password`) VALUES ( ? , ? , ? , ? )");
                 $addUserQuery->bind_param("ssss", $firstName, $lastName, $email, $password);
                 $addUserQuery->execute();
@@ -85,15 +65,11 @@
             } else {
                 echo 'terza via - errore query?';
             }
-        } else {
-            //echo 'risparmio risorse';
-            //var_dump($errors);
         }
     }
 
     //user login
     if (isset($_POST['login'])){
-        //$errors = [];
         $email = $_POST['email']; 
         $password = $_POST['password'];
 
@@ -104,7 +80,6 @@
         } elseif (strlen(trim($email)) > 255) {
             $errors['email'] = 'L\'email inserita è troppo lunga! Usa un massimo di 255 caratteri.';
         } elseif (strpos($email, '@') == false) {
-            //. (strpos($email, '@') == false) || (strpos($email, '.') < strpos($email, '@'))
             $errors['email'] = 'Inserisci una email valida.';
         }
         //# password
@@ -133,7 +108,7 @@
             echo 'errori';
         }
     }
-
+    //user events retrieval
     if(isset($_SESSION['email'])){
         $email = $_SESSION['email'];
         $eventsQuery = "SELECT * FROM `eventi` WHERE `attendees` LIKE '%$email%'";
