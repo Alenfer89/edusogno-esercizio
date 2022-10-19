@@ -24,7 +24,7 @@
                 <div class="container-fluid p-5">
                     <div class="row justify-content-center px-5">
                         <div class="col-12 text-center pb-5">
-                            <h2>
+                            <h2 class="ax-main-titles">
                                 Ciao 
                                 <span>
                                     <?php echo $_SESSION['user'] ; ?>
@@ -42,7 +42,7 @@
                 <div class="container-fluid p-5">
                     <div class="row justify-content-center px-5">
                         <div class="col-12 text-center pb-5">
-                            <h2>
+                            <h2 class="ax-main-titles">
                                 Crea il tuo account:
                             </h2>
                         </div>

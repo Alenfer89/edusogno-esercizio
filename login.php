@@ -42,7 +42,7 @@
                 <div class="container-fluid p-5">
                     <div class="row justify-content-center px-5">
                         <div class="col-12 text-center pb-5">
-                            <h2>
+                            <h2 class="ax-main-titles">
                                 Hai già un account?
                             </h2>
                         </div>
@@ -81,7 +81,6 @@
                             <?php endif  ; ?>
                         </div>
                     </div>
-            
                 </div>
             <?php endif ; ?>
         </div>

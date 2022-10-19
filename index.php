@@ -25,7 +25,7 @@
                 <div class="container-fluid p-5">
                     <div class="row justify-content-center px-5">
                         <div class="col-12">
-                            <h2 class="text-center pb-5">
+                            <h2 class="text-center pb-5 ax-main-titles">
                                 Ciao <span class="text-uppercase"><?php echo $_SESSION['user']; ?></span>, ecco i tuoi eventi:
                             </h2>
                         </div>
@@ -49,8 +49,8 @@
                             </div>
                         <?php endif ; ?>
                         <div class="col-12 text-center">
-                            <p>
-                                <a href="logout.php">Logout</a>
+                            <p class="pt-5">
+                                <a href="logout.php" class="btn btn-danger">Logout</a>
                             </p>
                         </div>
                     </div>
@@ -59,14 +59,14 @@
                 <div class="container-fluid p-5">
                     <div class="row justify-content-center px-5">
                         <div class="col-12">
-                            <h2 class="text-center pb-5">
+                            <h2 class="text-center pb-5 ax-main-titles">
                                 Benvenuto in edusogno!
                             </h2>
                         </div>
                         <div class="col-6 p-5 ax-window">
-                            <h3>
+                            <h4 class="ax-main-titles">
                                 Catchy title
-                            </h3>
+                            </h4>
                             <p>
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus labore blanditiis itaque quo, at fugiat molestias ullam fuga voluptatibus beatae. Necessitatibus porro animi rerum tempora blanditiis earum eligendi repellendus recusandae.
                             </p>

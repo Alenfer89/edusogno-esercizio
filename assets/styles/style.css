@@ -1,4 +1,3 @@
-
 header{
     height: 12vh;
     position: fixed;
@@ -13,6 +12,10 @@ main{
     height: 100vh;
     padding-top: 13vh;
     z-index: 0;
+}
+.ax-main-titles{
+    color: #134077;
+    font-weight: 700;
 }
 .ax-content{
     position: relative;
