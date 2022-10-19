@@ -44,7 +44,7 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php else : ?>
-                            <div class="col-3 mx-auto ax-window">
+                            <div class="col-3 mx-auto ax-window p-5 text-center">
                                 Non hai eventi
                             </div>
                         <?php endif ; ?>

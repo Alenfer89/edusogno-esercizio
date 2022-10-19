@@ -49,8 +49,11 @@
 
         //user added to server if email is not already included only if there are no errors
         if(count($errors) == 0){
-            $usersQuery = "SELECT * FROM `utenti` WHERE `email`='$email'";
-            $result = $conn->query($usersQuery);
+            $sql = "SELECT * FROM utenti WHERE email=?";
+            $usersQuery = $conn->prepare($sql);
+            $usersQuery->bind_param('s', $email);
+            $usersQuery->execute();
+            $result = $usersQuery->get_result();
             if($result && $result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
                     //# email check
@@ -89,11 +92,13 @@
 
         //user login if email and psw are correct and only if there are no errors
         if(count($errors) == 0){
-            $userQuery = "SELECT * FROM `utenti` WHERE `email`='$email' AND `password`='$password'";
-            $result = $conn->query($userQuery);
+            $sql = "SELECT * FROM `utenti` WHERE `email`=? AND `password`=?";
+            $userQuery = $conn->prepare($sql);
+            $userQuery->bind_param('ss', $email, $password);
+            $userQuery->execute();
+            $result = $userQuery->get_result();
             if($result && $result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-                    var_dump($row);
                     $_SESSION['user'] = $row['nome'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['success'] = 'Logged in';
@@ -102,7 +107,6 @@
                 
             } else if ($result) {
                 $_SESSION['message'] = 'Invalid email or password.';
-                echo $_SESSION['message'];
             }
         } else {
             echo 'errori';

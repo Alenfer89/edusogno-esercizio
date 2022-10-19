@@ -1,7 +1,7 @@
 <?php 
 
 ; ?>
-<header class="container-fluid d-flex align-items-center px-5">
+<header class="container-fluid d-none d-flex align-items-center px-5">
     <div class="row">
         <div class="col-2">
             <a href="index.php">
