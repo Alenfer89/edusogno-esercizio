@@ -11,18 +11,6 @@ submitButton.addEventListener('click', function(event){
     });
 
     //start of errors checks
-    //# name input
-    if(inputFirstName.value.trim() === ""){
-        errors.inputFirstName = 'Inserisci un nome per poterti registrare!';
-    } else if (inputFirstName.value.trim().length > 45) {
-        errors.inputFirstName = 'Il nome inserito è troppo lungo!';
-    }
-    //# last name input
-    if(inputLastName.value.trim() === ""){
-        errors.inputLastName = 'Inserisci un cognome per poterti registrare!';
-    } else if (inputLastName.value.trim().length > 45) {
-        errors.inputLastName = 'Il cognome inserito è troppo lungo!';
-    }
     //# email input
     if(inputEmail.value.trim() === ""){
         errors.inputEmail = 'Inserisci una eamil per poterti registrare!';

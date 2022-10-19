@@ -13,6 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <!-- Dedicated JS for input validation-->
+    <script src="./assets/js/loginVal.js" defer></script>
 </head>
 <body>
     <?php require('header.php') ; ?>
@@ -64,7 +66,7 @@
                                         <?php } ; ?>
                                     <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Scrivi qui">
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100" name='login'>Accedi</button>
+                                <button type="submit" class="btn btn-primary w-100" name='login' id='submit'>Accedi</button>
                             </form>
                             <p class="text-center py-4">
                                 Non hai ancora un profilo? <a href="register.php" class="fw-bold">Registrati</a>.
