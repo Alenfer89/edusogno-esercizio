@@ -13,8 +13,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <!-- Font Awesone 6.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Dedicated JS for input validation-->
     <script src="./assets/js/loginVal.js" defer></script>
+    <!-- Generic script-->
+    <script src="./assets/js/script.js" defer></script>
 </head>
 <body>
     <?php require('header.php') ; ?>
@@ -64,7 +68,10 @@
                                                 <?php echo $errors['password']; ?>
                                             </span>
                                         <?php } ; ?>
-                                    <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Scrivi qui">
+                                        <div class="position-relative">
+                                            <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Scrivi qui">
+                                            <i class="fa-solid fa-eye-slash ax-icon" id='passwordToggler'></i>
+                                        </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100" name='login' id='submit'>Accedi</button>
                             </form>

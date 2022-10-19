@@ -13,6 +13,21 @@ main{
     padding-top: 13vh;
     z-index: 0;
 }
+input.form-control{
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid black;
+}
+label{
+    font-size: .75rem;
+}
+i.ax-icon{
+    position: absolute;
+    right: 0;
+    top: 15px;
+    bottom: 0;
+    margin: 0 auto;
+}
 .ax-main-titles{
     color: #134077;
     font-weight: 700;
