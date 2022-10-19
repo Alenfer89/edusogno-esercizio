@@ -11,53 +11,79 @@
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body>
-    <nav>
-        <a href="index.php">index</a>
-        <a href="register.php">register</a>
-    </nav>
-    <h1>
-        LOGIN
-    </h1>
-    <section class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6">
-            <form action="login.php" method="POST">
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email address</label>
-                        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" name='email'>
-                        <div id="emailHelp" class="form-text">Scrivi l'email con cui hai effettuato la registrazione.</div>
+    <?php require('header.php') ; ?>
+    <main class="position-relative">
+        <div class="ax-content">
+            <?php if(isset($_SESSION['success'])): ; ?>
+                <div class="container-fluid p-5">
+                    <div class="row justify-content-center px-5">
+                        <div class="col-12 text-center pb-5">
+                            <h2>
+                                Ciao 
+                                <span>
+                                    <?php echo $_SESSION['user'] ; ?>
+                                </span>
+                            </h2>
+                        </div>
+                        <div class="col-6 ax-window p-4">
+                            <p>
+                                Hai già effettuato l'accesso, vuoi <a href="logout.php">sloggare</a>?
+                            </p>
+                        </div>
                     </div>
-                    <?php if(isset($errors['email'])) {; ?>
-                        <p>
-                            <?php echo $errors['email']; ?>
-                        </p>
-                    <?php } ; ?>
-                    <div class="mb-3">
-                        <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" name='password'>
-                        <!-- <div id="passwordHelpBlock" class="form-text">
-                            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                        </div> -->
+                </div>
+            <?php  else  : ; ?>
+                <div class="container-fluid p-5">
+                    <div class="row justify-content-center px-5">
+                        <div class="col-12 text-center pb-5">
+                            <h2>
+                                Hai già un account?
+                            </h2>
+                        </div>
+                        <div class="col-6 ax-window p-4">
+                            <form action="login.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="inputEmail" class="form-label">Inserisci l'e-mail</label>
+                                        <?php if(isset($errors['email'])) {; ?>
+                                            <span class="ms-5 text-danger">
+                                                <?php echo $errors['email']; ?>
+                                            </span>
+                                        <?php } ; ?>
+                                    <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" name='email' placeholder="thisIs@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPassword" class="form-label">Inserisci la Password</label>
+                                        <?php if(isset($errors['password'])) {; ?>
+                                            <span class="ms-5 text-danger">
+                                                <?php echo $errors['password']; ?>
+                                            </span>
+                                        <?php } ; ?>
+                                    <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Scrivi qui">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100" name='login'>Accedi</button>
+                            </form>
+                            <p class="text-center py-4">
+                                Non hai ancora un profilo? <a href="register.php" class="fw-bold">Registrati</a>.
+                            </p>
+                            <?php if(isset($_SESSION['message'])) : ; ?>
+                                <p class="text-center text-danger">
+                                    <?php
+                                        echo $_SESSION['message'];
+                                        session_destroy();
+                                    ?>
+                                </p>
+                            <?php endif  ; ?>
+                        </div>
                     </div>
-                    <?php if(isset($errors['password'])) {; ?>
-                        <p>
-                            <?php echo $errors['password']; ?>
-                        </p>
-                    <?php } ; ?>
-                    <button type="submit" class="btn btn-primary" name='login'>Accedi</button>
-                </form>
-            </div>
+            
+                </div>
+            <?php endif ; ?>
         </div>
-        <?php if(isset($_SESSION['message'])) : ; ?>
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <?php echo $_SESSION['message'] ; ?>
-            </div>
-        </div>
-        <?php endif  ; ?>
-
-    </section>
+        <?php require('background.php') ; ?>
+    </main>
 </body>
 </html>

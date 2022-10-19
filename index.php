@@ -1,7 +1,4 @@
-<?php include('server.php'); 
-echo $_SESSION['user'];
-echo $_SESSION['email'];
-echo $_SESSION['success'];
+<?php include('server.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,51 +13,83 @@ echo $_SESSION['success'];
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 
 <body>
-    <nav>
-        <a href="register.php">register</a>
-        <a href="login.php">login</a>
-    </nav>
-
-    <h1>
-        INDEX
-    </h1>
-
-    <?php if(isset($_SESSION['success'])): ; ?>
-        <p>
-            welcome 
-            <span>
-                <?php echo $_SESSION['user'] . ' '; ?>
-            </span>
-            tizio loggato
-        </p>
-        <p>
-            <?php var_dump($events) ; ?>
-        </p>
-        <?php if(count($events) > 0) :  ?>
-        <ul>
-            <?php foreach($events as $event) : ; ?>
-            <li>
-                <?php echo $event['nome_evento'] ; ?>
-            </li>
-            <?php endforeach; ?>
-        </ul>
-        <?php else : ?>
-            <p>
-                Non hai eventi
-            </p>
-        <?php endif ; ?>
-        <p>
-            <a href="logout.php">Logout</a>
-        </p>
-    <?php  else  : ; ?>
-        <p>
-            tizio non loggato
-            <span>
-        </p>
-    <?php endif ; ?>
+    
+    <?php require('header.php') ; ?>
+    <main class="position-relative">
+        <div class="ax-content">
+            <?php if(isset($_SESSION['success'])): ; ?>
+                <div class="container-fluid p-5">
+                    <div class="row justify-content-center px-5">
+                        <div class="col-12">
+                            <h2 class="text-center pb-5">
+                                Ciao <span class="text-uppercase"><?php echo $_SESSION['user']; ?></span>, ecco i tuoi eventi:
+                            </h2>
+                        </div>
+                        <?php if(count($events) > 0) :  ?>
+                            <?php foreach($events as $event) : ; ?>
+                                <div class="col-3 p-4 mx-auto ax-window">
+                                    <h2 class="fw-bold">
+                                        <?php echo $event['nome_evento'] ; ?>
+                                    </h2>
+                                    <p class="text-secondary">
+                                        <?php echo $event['data_evento'] ; ?>
+                                    </p>
+                                    <button class="btn btn-primary text-uppercase w-100">
+                                        join
+                                    </button>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <div class="col-3 mx-auto ax-window">
+                                Non hai eventi
+                            </div>
+                        <?php endif ; ?>
+                        <div class="col-12 text-center">
+                            <p>
+                                <a href="logout.php">Logout</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php  else  : ; ?>
+                <div class="container-fluid p-5">
+                    <div class="row justify-content-center px-5">
+                        <div class="col-12">
+                            <h2 class="text-center pb-5">
+                                Benvenuto in edusogno!
+                            </h2>
+                        </div>
+                        <div class="col-6 p-5 ax-window">
+                            <h3>
+                                Catchy title
+                            </h3>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus labore blanditiis itaque quo, at fugiat molestias ullam fuga voluptatibus beatae. Necessitatibus porro animi rerum tempora blanditiis earum eligendi repellendus recusandae.
+                            </p>
+                            <p class="py-5 text-center">
+                                Effettua l'accesso per consultare la tua area personale.
+                            </p>
+                            <div class="row text-center py-3 m-0">
+                                <div class="col-6">
+                                    Vai al <a href="login.php" class="fw-bold">login</a>.
+                                </div>
+                                <div class="col-6">
+                                    Non hai un account? <a href="register.php" class="fw-bold">Registrati</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif ; ?>
+        </div>
+        <?php require('background.php') ; ?>
+    </main>
+    
 
 </body>
 
